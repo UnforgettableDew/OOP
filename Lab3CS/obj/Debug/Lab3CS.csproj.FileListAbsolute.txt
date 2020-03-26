@@ -1,0 +1,6 @@
+D:\C#\Lab3CS\Lab3CS\bin\Debug\Lab3CS.exe.config
+D:\C#\Lab3CS\Lab3CS\bin\Debug\Lab3CS.exe
+D:\C#\Lab3CS\Lab3CS\bin\Debug\Lab3CS.pdb
+D:\C#\Lab3CS\Lab3CS\obj\Debug\Lab3CS.csprojAssemblyReference.cache
+D:\C#\Lab3CS\Lab3CS\obj\Debug\Lab3CS.exe
+D:\C#\Lab3CS\Lab3CS\obj\Debug\Lab3CS.pdb
