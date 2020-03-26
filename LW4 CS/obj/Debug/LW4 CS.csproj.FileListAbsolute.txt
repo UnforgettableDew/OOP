@@ -1,0 +1,6 @@
+D:\C#\LW4 CS\LW4 CS\bin\Debug\LW4 CS.exe.config
+D:\C#\LW4 CS\LW4 CS\bin\Debug\LW4 CS.exe
+D:\C#\LW4 CS\LW4 CS\bin\Debug\LW4 CS.pdb
+D:\C#\LW4 CS\LW4 CS\obj\Debug\LW4 CS.csprojAssemblyReference.cache
+D:\C#\LW4 CS\LW4 CS\obj\Debug\LW4 CS.exe
+D:\C#\LW4 CS\LW4 CS\obj\Debug\LW4 CS.pdb
