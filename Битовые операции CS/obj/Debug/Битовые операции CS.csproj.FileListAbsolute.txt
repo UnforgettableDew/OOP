@@ -1,0 +1,6 @@
+D:\C++\LW\Битовые операции CS\Битовые операции CS\bin\Debug\Битовые операции CS.exe.config
+D:\C++\LW\Битовые операции CS\Битовые операции CS\bin\Debug\Битовые операции CS.exe
+D:\C++\LW\Битовые операции CS\Битовые операции CS\bin\Debug\Битовые операции CS.pdb
+D:\C++\LW\Битовые операции CS\Битовые операции CS\obj\Debug\Битовые операции CS.csprojAssemblyReference.cache
+D:\C++\LW\Битовые операции CS\Битовые операции CS\obj\Debug\Битовые операции CS.exe
+D:\C++\LW\Битовые операции CS\Битовые операции CS\obj\Debug\Битовые операции CS.pdb
