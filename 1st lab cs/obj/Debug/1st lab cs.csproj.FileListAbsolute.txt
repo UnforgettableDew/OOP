@@ -1,0 +1,6 @@
+D:\C++\ООП\1st lab cs\1st lab cs\obj\Debug\1st lab cs.csprojAssemblyReference.cache
+D:\C++\ООП\1st lab cs\1st lab cs\bin\Debug\1st lab cs.exe.config
+D:\C++\ООП\1st lab cs\1st lab cs\bin\Debug\1st lab cs.exe
+D:\C++\ООП\1st lab cs\1st lab cs\bin\Debug\1st lab cs.pdb
+D:\C++\ООП\1st lab cs\1st lab cs\obj\Debug\1st lab cs.exe
+D:\C++\ООП\1st lab cs\1st lab cs\obj\Debug\1st lab cs.pdb
