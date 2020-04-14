@@ -1,0 +1,6 @@
+D:\C#\LW5.2\LW5.2\obj\Debug\LW5.2.csprojAssemblyReference.cache
+D:\C#\LW5.2\LW5.2\bin\Debug\LW5.2.exe.config
+D:\C#\LW5.2\LW5.2\bin\Debug\LW5.2.exe
+D:\C#\LW5.2\LW5.2\bin\Debug\LW5.2.pdb
+D:\C#\LW5.2\LW5.2\obj\Debug\LW5.2.exe
+D:\C#\LW5.2\LW5.2\obj\Debug\LW5.2.pdb
