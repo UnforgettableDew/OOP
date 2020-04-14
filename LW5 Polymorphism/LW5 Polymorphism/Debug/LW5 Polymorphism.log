@@ -1,0 +1,6 @@
+﻿  LW5 Polymorphism.cpp
+D:\C++\LW5 Polymorphism\LW5 Polymorphism\LW5 Polymorphism.cpp(27,25): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+D:\C++\LW5 Polymorphism\LW5 Polymorphism\LW5 Polymorphism.cpp(32,21): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+D:\C++\LW5 Polymorphism\LW5 Polymorphism\LW5 Polymorphism.cpp(49,21): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+D:\C++\LW5 Polymorphism\LW5 Polymorphism\LW5 Polymorphism.cpp(54,25): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+  LW5 Polymorphism.vcxproj -> D:\C++\LW5 Polymorphism\Debug\LW5 Polymorphism.exe
