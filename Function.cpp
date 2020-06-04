@@ -194,7 +194,7 @@ CallCentre::CallCentre()
     wage = 0;
 }
 
-float CallCentre::Work(short hours) override
+float CallCentre::Work(short hours) 
 {
     calls = 0;
     for (int i = 0; i < hours; i++)
@@ -218,7 +218,7 @@ Taxi::Taxi()
     wage = 0;
 }
 
-float Taxi::Work(short hours) override
+float Taxi::Work(short hours) 
 {
     wage = 0;
     for (int i = 0; i < hours; i++)
@@ -398,6 +398,8 @@ float Account::checkId()
     return id;
 }
 
+short Account::tmpId = 0;
+
 Budget::Budget(int size)
 {
     generalMoney = 0;
@@ -526,7 +528,7 @@ void Interface::showCosts()
 Pet Interface::buyPet(Account& account)
 {
     Shop shop;
-    Pet pet;
+    
     string name;
     int s;
     int g;
@@ -540,7 +542,7 @@ Pet Interface::buyPet(Account& account)
     std::cin >> s;
     s--;
     Animals species = static_cast<Animals>(s);
-
+    Pet pet;
     std::cout << "Choose gender of your animal:\n";
     std::cout << "1) Male\n";
     std::cout << "2) Female\n";
@@ -548,7 +550,6 @@ Pet Interface::buyPet(Account& account)
     std::cin >> g;
     g--;
     Gender gender = static_cast<Gender>(g);
-
 
     pet = account.buyPet(shop, species, gender, pet);
     std::cout << "Choose name of your animal: ";
