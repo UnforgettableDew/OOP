@@ -1,10 +1,11 @@
-﻿#include <iostream>
+#include <iostream>
 #include <ctime>
 #include <exception>
 #include <vector>
 #include <string>
 #include"Classes.h";
 using namespace std;
+    
 
 int main()
 {
@@ -26,11 +27,8 @@ int main()
     Pet pet;
     Phone phone;
     Interface iface;
-    //iface.Menu();
-    typedef void(Interface::* funPointer)();
-    funPointer fPointer;
-    fPointer = &Interface::Menu;
-    (iface.*fPointer)();
+
+    doSmth(iface, &Interface::Menu);
 
     while (stop)
     {
@@ -95,16 +93,20 @@ int main()
                 cin >> id;
                 id--;
                 cout << "Choose how would you like to spend money?:\n";
-                iface.showCosts();
+                doSmth(iface, &Interface::showCosts);
 
                 cin >> cost;
                 switch (cost)
                 {
                 case 1:
+                    doSmth(iface, &Interface::showAnimals);
+                    doSmth(iface, &Interface::showGenders);
                     pet = iface.buyPet(budget[id]);
                     iface.petInfo(pet);
                     break;
                 case 2:
+                    doSmth(iface, &Interface::showModels);
+                    doSmth(iface, &Interface::showColors);
                     phone = iface.buyPhone(budget[id]);
                     iface.phoneInfo(phone);
                     break;
@@ -176,7 +178,7 @@ int main()
                 cin >> id;
                 id--;
                 cout << "Choose :\n";
-                iface.showCosts();
+                doSmth(iface, &Interface::showCosts);
                 cin >> c;
                 c--;
                 Costs cost = static_cast<Costs>(c);
@@ -199,6 +201,12 @@ int main()
             {
                 cout << ex.what();
             }
+            break;
+        case 11:
+            cout << "Enter account id to play casino: ";
+            cin >> id;
+            id--;
+            iface.playCasino(budget[id]);
             break;
         default:
             stop = false;
