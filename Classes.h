@@ -66,7 +66,6 @@ private:
     Colors color;
     int ram;
 public:
-    Phone();
 
     void setColor(Colors color);
 
@@ -187,7 +186,7 @@ public:
 
     void withdraw_Money(float money);
 
-    void tryLuck(Casino& casino, float bet, Colors colour);
+    float tryLuck(Casino& casino, float bet, Colors colour);
 
     void transferMoney(float money, Account& otherAccount);
 
@@ -196,9 +195,6 @@ public:
     float checkId();
 
 };
-
-short Account::tmpId = 0;
-
 
 class Budget
 {
@@ -228,6 +224,8 @@ public:
 
     void showAccountBalance(Account& account);
 
+    void playCasino(Account& account);
+
     void showBalance(Budget budget);
 
     void showInfo(Account& account);
@@ -242,14 +240,26 @@ public:
 
     void showCosts();
 
+    void showAnimals();
+
+    void showGenders();
+
     Pet buyPet(Account& account);
 
     void petInfo(Pet& pet);
 
     void phoneInfo(Phone& phone);
 
+    void showModels();
+
+    void showColors();
+
     Phone buyPhone(Account& account);
 
     void transferMoney(Account& thisAccount, Account& otherAccount, float money);
 
 };
+
+typedef void(Interface::* funPointer)();
+
+void doSmth(Interface i, funPointer f);
