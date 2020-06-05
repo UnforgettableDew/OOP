@@ -5,9 +5,7 @@
 #include <string>
 #include "Classes.h"
 
-
-Phone::Phone() {}
-
+//Клас телефон
 void Phone::setColor(Colors color)
 {
     this->color = color;
@@ -75,7 +73,7 @@ int Phone::showRam()
 {
     return ram;
 }
-
+//Клас магазин
 Phone Shop::choosePhone(Colors color, Models model, float& money, Phone phone)
 {
     switch (model)
@@ -112,7 +110,7 @@ Phone Shop::choosePhone(Colors color, Models model, float& money, Phone phone)
         break;
     }
 }
-
+//Клас домашній улюблинець
 void Pet::setName(string name)
 {
     this->name = name;
@@ -187,7 +185,7 @@ void Shop::chooseAnimal(Animals species, Gender gender, float& money, Pet& pet)
         break;
     }
 }
-
+//Клас колцентр
 CallCentre::CallCentre()
 {
     calls = 0;
@@ -210,7 +208,7 @@ float CallCentre::Work(short hours)
         return wage;
     }
 }
-
+//Клас Таксі
 Taxi::Taxi()
 {
     distance = 0;
@@ -229,7 +227,7 @@ float Taxi::Work(short hours)
     }
     return wage;
 }
-
+//Клас казино
 Casino::Casino()
 {
     win = 0;
@@ -261,19 +259,19 @@ float Casino::Play(float bet, Colors colour)
     }
     return win;
 }
-
+//Структура прибуток
 Revenue::Revenue(Works work, float money)
 {
     this->money = money;
     this->work = work;
 }
-
+//Структура витрати
 Cost::Cost(Costs cost, float money)
 {
     this->kind = cost;
     this->money = money;
 }
-
+//Клас рахунок
 Account::Account()
 {
     this->money = 0;
@@ -358,7 +356,7 @@ void Account::withdraw_Money(float money)
     this->money -= money;
 }
 
-void Account::tryLuck(Casino& casino, float bet, Colors colour)
+float Account::tryLuck(Casino& casino, float bet, Colors colour)
 {
     if (bet <= 0)
         throw new exception("You can't bet a negative value");
@@ -372,10 +370,10 @@ void Account::tryLuck(Casino& casino, float bet, Colors colour)
     }
     else
     {
-        Cost tmpCost(Costs::Casino, win);
+        Cost tmpCost(Costs::Casino, bet);
         cost.push_back(tmpCost);
     }
-
+    return win;
 }
 
 void Account::transferMoney(float money, Account& otherAccount)
@@ -399,7 +397,7 @@ float Account::checkId()
 }
 
 short Account::tmpId = 0;
-
+//Клас бюджет
 Budget::Budget(int size)
 {
     generalMoney = 0;
@@ -422,7 +420,7 @@ Account& Budget::operator[](int index)
     else
         return account[index];
 }
-
+//Клас інтерфейс
 Interface::Interface()
 {
     std::cout << "Hello!\n";
@@ -430,7 +428,6 @@ Interface::Interface()
 
 void Interface::Menu()
 {
-    std::cout << "========================================\n";
     std::cout << "1) Deposit money\n";
     std::cout << "2) Withdraw money\n";
     std::cout << "3) Earn money\n";
@@ -441,63 +438,74 @@ void Interface::Menu()
     std::cout << "8) Show current revenue on current account\n";
     std::cout << "9) Show current costs on current account\n";
     std::cout << "10) Show info about account\n";
+    std::cout << "11) Play casino\n";
     std::cout << "Press any key to exit\n";
-    std::cout << "========================================\n";
 }
 
 void Interface::depositMoney(Account& account, float money)
 {
     account.putMoney(money);
-    std::cout << money << " was deposited on #" << account.checkId() << " account\n";
+    std::cout << money << " UAH " << " was deposited on #" << account.checkId() << " account\n";
 }
 
 void Interface::withdrawMoney(Account& account, float money)
 {
     account.withdraw_Money(money);
-    std::cout << money << " was withdrawn from #" << account.checkId() << " account\n";
+    std::cout << money << " UAH " << " was withdrawn from #" << account.checkId() << " account\n";
 }
 
 void Interface::showAccountBalance(Account& account)
 {
-    std::cout << "Your balance on #" << account.checkId() << " account " << " = " << account.checkMoney() << endl;
+    std::cout << "Your balance on #" << account.checkId() << " account " << " = " << account.checkMoney() << " UAH"<< endl;
 }
 
 void Interface::showBalance(Budget budget)
 {
-    std::cout << "Your general balance = " << budget.checkGeneralMoney() << endl;
+    std::cout << "Your general balance = " << budget.checkGeneralMoney() << " UAH" << endl;
 }
 
 void Interface::showInfo(Account& account)
 {
     std::cout << "===============================\n";
     std::cout << "Account #" << account.checkId() << endl;
-    std::cout << "Balance = " << account.checkMoney() << endl;
-    std::cout << "All revenues =  " << account.allRevenue() << endl;
-    std::cout << "All costs = " << account.allCosts() << endl;
+    std::cout << "Balance = " << account.checkMoney() << " UAH" << endl;
+    std::cout << "All revenues =  " << account.allRevenue() << " UAH" << endl;
+    std::cout << "All costs = " << account.allCosts() << " UAH" << endl;
     std::cout << "===============================\n";
 }
 
 void Interface::showSpecificRevenue(Account& account, Works work)
 {
     if (work == Works::CallCentre)
-        std::cout << "Your income while working in a call centre = " << account.currentRevenue(work) << endl;
+        std::cout << "Your income while working in a call centre = " << account.currentRevenue(work) << " UAH" << endl;
     else
-        std::cout << "Your income while working in a taxi = " << account.currentRevenue(work) << endl;
+    {
+        if (work == Works::Taxi)
+            std::cout << "Your income while working in a taxi = " << account.currentRevenue(work) << " UAH" << endl;
+        else
+            std::cout<<"Your income while playing in a casion = " << account.currentRevenue(work) << " UAH" << endl;
+    }
 }
 
 void Interface::showSpecificCosts(Account& account, Costs cost)
 {
     std::cout << "Account #" << account.checkId() << endl;
     if (cost == Costs::buyPet)
-        std::cout << "Your costs while buying pet = " << account.currentCosts(cost) << endl;
+        std::cout << "Your costs while buying pet = " << account.currentCosts(cost) << " UAH" << endl;
     else
-        std::cout << "Your costs while buying phone = " << account.currentCosts(cost) << endl;
+    {
+        if (cost == Costs::buyPhone)
+            std::cout << "Your costs while buying phone = " << account.currentCosts(cost) << " UAH" << endl;
+        else
+            std::cout << "You lose " << account.currentCosts(cost) << " UAH " << "while playing in a casino\n";
+    }
 }
 
 void Interface::showWorks()
 {
     std::cout << "1) Call centre\n";
     std::cout << "2) Taxi\n";
+    std::cout << "3) Playing in casino\n";
 }
 
 void Interface::earnMoney(Account& account)
@@ -523,6 +531,23 @@ void Interface::showCosts()
 {
     std::cout << "1) Buy pet\n";
     std::cout << "2) Buy phone\n";
+    std::cout << "3) Playing in casino\n";
+}
+
+void Interface::showAnimals()
+{
+    std::cout << "Choose species of your animal:\n";
+    std::cout << "1) Cat(Price 2500 UAH)\n";
+    std::cout << "2) Dog(Price 3000 UAH)\n";
+    std::cout << "3) Hamster(Price 1500 UAH)\n";
+    std::cout << "4) Rabbit(Price 1300 UAH)\n";
+}
+
+void Interface::showGenders()
+{
+    std::cout << "Choose gender of your animal:\n";
+    std::cout << "1) Male\n";
+    std::cout << "2) Female\n";
 }
 
 Pet Interface::buyPet(Account& account)
@@ -532,20 +557,13 @@ Pet Interface::buyPet(Account& account)
     string name;
     int s;
     int g;
-
-    std::cout << "Choose species of your animal:\n";
-    std::cout << "1) Cat\n";
-    std::cout << "2) Dog\n";
-    std::cout << "3) Hamster\n";
-    std::cout << "4) Rabbit\n";
-
+    
+    std::cout << "Enter animal: ";
     std::cin >> s;
     s--;
     Animals species = static_cast<Animals>(s);
     Pet pet;
-    std::cout << "Choose gender of your animal:\n";
-    std::cout << "1) Male\n";
-    std::cout << "2) Female\n";
+    std::cout << "Enter gender: ";
 
     std::cin >> g;
     g--;
@@ -572,21 +590,17 @@ void Interface::phoneInfo(Phone& phone)
     std::cout << "Ram: " << phone.showRam() << endl;
 }
 
-Phone Interface::buyPhone(Account& account)
+void Interface::showModels()
 {
-    Shop shop;
-    int c;
-    int m;
-
     std::cout << "Choose model of your phone:\n";
-    std::cout << "1) Samsung\n";
-    std::cout << "2) Iphone\n";
-    std::cout << "3) Huawei\n";
-    std::cout << "4) Nokia\n";
-    std::cin >> m;
-    m--;
-    Models model = static_cast<Models>(m);
+    std::cout << "1) Samsung(Price 10500 UAH)\n";
+    std::cout << "2) Iphone(Price 12500 UAH)\n";
+    std::cout << "3) Huawei(Price 10300 UAH)\n";
+    std::cout << "4) Nokia(Price 7500 UAH)\n";
+}
 
+void Interface::showColors()
+{
     std::cout << "Choose color of your phone:\n";
     std::cout << "1) Red\n";
     std::cout << "2) Black\n";
@@ -594,12 +608,44 @@ Phone Interface::buyPhone(Account& account)
     std::cout << "4) White\n";
     std::cout << "5) Gold\n";
     std::cout << "6) Silver\n";
+}
 
+Phone Interface::buyPhone(Account& account)
+{
+    Shop shop;
+    int c;
+    int m;
+    std::cout << "Enter model: ";
+    std::cin >> m;
+    m--;
+    Models model = static_cast<Models>(m);
+
+    std::cout << "Enter color:";
     std::cin >> c;
     c--;
 
     Colors color = static_cast<Colors>(c);
     return account.buyPhone(shop, model, color);
+}
+
+void Interface::playCasino(Account& account)
+{
+    float bet;
+    Casino casino;
+    int c;
+    cout << "How much money would you like to bet?: ";
+    cin >> bet;
+    cout << "Select colour:\n";
+    cout << "1) Red\n";
+    cout << "2) Black\n";
+    cout << "3) Green\n";
+    cin >> c;
+    Colors color = static_cast<Colors>(c);
+    float result = account.tryLuck(casino, bet, color);
+    if (result > 0)
+        cout << "You won " << result << " UAH\n";
+    else
+        cout << "You lose " << bet << " UAH\n";
 }
 
 void Interface::transferMoney(Account& thisAccount, Account& otherAccount, float money)
@@ -608,4 +654,11 @@ void Interface::transferMoney(Account& thisAccount, Account& otherAccount, float
     std::cout << "Succesful transaction\n";
     showAccountBalance(thisAccount);
     showAccountBalance(otherAccount);
+}
+
+void doSmth(Interface i, funPointer f)
+{
+    std::cout << "===============================\n";
+    (i.*f)();
+    std::cout << "===============================\n";
 }
